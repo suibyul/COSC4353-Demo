@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="1260">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Management </title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Imbue&family=Dancing+Script&family=Acme&family=Kurale&family=Open+Sans&family=Raleway&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/stlz.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:3000/home">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:3000/FQF">Fuel Quote Form</a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="http://localhost:3000/fuelhistory">Fuel Quote History</a>
+        </li>
+
+      </ul>
+
+
+      <button type="button" onclick = "location.href='actmngr.html'" class="btn btn-default">
+        <i class="fa fa-user" aria-hidden="true"></i> Profile
+      </button>
+
+
+      <button type="button" onclick = "location.href='login.html'" class="btn btn-default">
+        <i class="fa fa-sign-out-alt" aria-hidden="true"></i> Log out
+      </button>
+
+
+    </div>
+
+  </nav>
+
+  <div class="main2">
+    <p class="sign" align="center">My Account</p>
+    <form method="POST"action="/clientProfileMgt">
+      <label class="lab2" for="fullname"><b> Full Name</b></label>
+      <input class = "login" type="text" id="fullName" name="fullname" placeholder="Enter Full Name" maxlength="50" required><br>
+      <label class="lab2" for="address"><b> Address 1</b></label>
+      <input class = "login"type="text" id="address" name="address" placeholder="Enter Address" maxlength="100" required><br>
+      <label class="lab2" for="address1"><b> Address 2</b></label>
+      <input class = "login3" type="text" id="address1" name="address1" placeholder="Enter Address(if applicable)" maxlength="100"><br>
+      <label class="lab2" for="City" style = "margin-left:171px;"><b> City</b></label>
+      <input class = "login"type="text" id="City" name="City" placeholder="Enter City" maxlength="100"  required><br>
+      <label class="lab2" for="State"style = "margin-left:171px;"><b> State</b></label>
+      <select class = "login"name="State" id="State" required>
+        <option  value ="">Select your State</option>
+        <option value="AL">Alabama</option>
+        <option value="AK">Alaska</option>
+        <option value="AZ">Arizona</option>
+        <option value="AR">Arkansas</option>
+        <option value="CA">California</option>
+        <option value="CO">Colorado</option>
+        <option value="CT">Connecticut</option>
+        <option value="DE">Delaware</option>
+        <option value="DC">District Of Columbia</option>
+        <option value="FL">Florida</option>
+        <option value="GA">Georgia</option>
+        <option value="HI">Hawaii</option>
+        <option value="ID">Idaho</option>
+        <option value="IL">Illinois</option>
+        <option value="IN">Indiana</option>
+        <option value="IA">Iowa</option>
+        <option value="KS">Kansas</option>
+        <option value="KY">Kentucky</option>
+        <option value="LA">Louisiana</option>
+        <option value="ME">Maine</option>
+        <option value="MD">Maryland</option>
+        <option value="MA">Massachusetts</option>
+        <option value="MI">Michigan</option>
+        <option value="MN">Minnesota</option>
+        <option value="MS">Mississippi</option>
+        <option value="MO">Missouri</option>
+        <option value="MT">Montana</option>
+        <option value="NE">Nebraska</option>
+        <option value="NV">Nevada</option>
+        <option value="NH">New Hampshire</option>
+        <option value="NJ">New Jersey</option>
+        <option value="NM">New Mexico</option>
+        <option value="NY">New York</option>
+        <option value="NC">North Carolina</option>
+        <option value="ND">North Dakota</option>
+        <option value="OH">Ohio</option>
+        <option value="OK">Oklahoma</option>
+        <option value="OR">Oregon</option>
+        <option value="PA">Pennsylvania</option>
+        <option value="RI">Rhode Island</option>
+        <option value="SC">South Carolina</option>
+        <option value="SD">South Dakota</option>
+        <option value="TN">Tennessee</option>
+        <option value="TX">Texas</option>
+        <option value="UT">Utah</option>
+        <option value="VT">Vermont</option>
+        <option value="VA">Virginia</option>
+        <option value="WA">Washington</option>
+        <option value="WV">West Virginia</option>
+        <option value="WI">Wisconsin</option>
+        <option value="WY">Wyoming</option>
+      </select>
+
+      <label class="lab2" for="zip"><b> Zipcode</b></label>
+      <input  class="login" id="zip" name="zip" type="text" pattern="[0-9]*" placeholder="Enter ZipCode"  maxlength="9" minlength="5"required
+      oninvalid="this.setCustomValidity('Please enter a valid zip code')"
+      oninput="this.setCustomValidity('')"/>
+
+      <button class="submit1" type="submit"onclick="myfunction3()" name="actbutton" id="actbutton"  disabled="disabled">Save</button>
+
+
+     
+
+
+
+
+    </form>
+  </div>
+  <script>
+
+    window.onload=my_code();
+
+    async function my_code(){
+      
+      const response = await fetch("http://localhost:3000/getProfile", {
+          method: "GET",
+          headers: {'Content-Type': 'application/json'}
+      });
+      profileData = await response.json();
+      
+      fname = document.getElementById('fullName');
+      addr = document.getElementById('address');
+      addr2 = document.getElementById('address1');
+      city = document.getElementById('City');
+      state = document.getElementById('State');
+      zipcode = document.getElementById('zip');
+
+      if(profileData['FullName'] != null) {
+        fname.value = profileData['FullName']
+        addr.value = profileData['Address1']
+        addr2.value = profileData['Address2']
+        city.value = profileData['City']
+        state.value = profileData['State']
+        zipcode.value = profileData['Zipcode']
+      }
+    }
+
+    
+  </script>
+  <script   src="https://code.jquery.com/jquery-3.5.1.js"   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="   crossorigin="anonymous"></script>
+  <script src="profile.js"></script>
+ 
+</body>
+
+</html>

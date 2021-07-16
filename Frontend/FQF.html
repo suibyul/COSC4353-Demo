@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="1260">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Quote Form </title>
+  <link rel="stylesheet" href="css/stlz.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Imbue&family=Dancing+Script&family=Acme&family=Kurale&family=Open+Sans&family=Raleway&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:3000/home">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:3000/FQF">Fuel Quote Form</a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="http://localhost:3000/fuelhistory">Fuel Quote History</a>
+        </li>
+
+      </ul>
+
+
+      <button type="button" onclick = "location.href='actmngr.html'" class="btn btn-default">
+        <i class="fa fa-user" aria-hidden="true"></i> Profile
+      </button>
+
+
+      <button type="button" onclick = "location.href='login.html'" class="btn btn-default">
+        <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+      </button>
+
+
+    </div>
+
+  </nav>
+
+
+  <h1 class="sign2" align="center">Fuel Quote Form</h1>
+  <form action="/FuelQuote" method="POST" >
+    <label for="quantity"><b>Gallons Requested:</b></label>
+    <input type="number"step="any" class="login2" placeholder="Gallons Requested " min="0" name="input1" id="GR" required>
+
+    <br>
+
+
+    <!-- Delivery Address -->
+    <label class="dA" for="deliveryAddress"><b>Delivery Address:</b></label>
+    <input type="text" name="DA" id = "DA" placeholder= "Enter Address on Profile Page" class="login2" readonly>
+    <br>
+    <label class="dA" for="deliveryAddress"><b>Delivery Date:</b></label>
+    <input class="login2 datechk" type="date" name="datechk" id = "datechk"onkeydown="return false">
+      </b>
+    </p>
+
+
+    <!-- Suggested Price Per Gallon -->
+    <label class="pricePerGallon" for="ppg"><b>Suggested Price Per Gallon:</b></label>
+    <input class="login2" type="number" name="SP" id="SP" readonly>
+    <br>
+
+    <!-- Total Amount Due (calculated through gallons * price) -->
+    <br>
+    <label class="total" for="totalAmt"><b>Total Amount Due:</b></label>
+    <input class="login2" type="number" name="TAD" id="TAD" readonly>
+    <br>
+<div class = "forbtn">
+    <button type="submit" class="submit3" onclick="myFunction()"id="submitButton" disabled="disabled">Submit</button></a>
+    <button type="button" class="submit2" onclick="pricing();enableButton()"  id="getQB" disabled="disabled">Get Quote</button></a>
+</div>
+
+    <script>
+      function enableButton() {
+        document.getElementById("submitButton").disabled = false
+      }
+    </script>
+
+
+    <script>
+
+      window.onload=my_code();
+
+      async function my_code(){
+        
+        const response = await fetch("http://localhost:3000/getAddress", {
+            method: "GET",
+            headers: {'Content-Type': 'application/json'}
+        });
+        addrData = await response.json();
+        
+        dAddress = document.getElementById('DA');
+
+        if(addrData['address'] != null) {
+          dAddress.value = addrData['address']
+        }
+      }
+
+      
+    </script>
+
+
+
+    <script   src="https://code.jquery.com/jquery-3.5.1.js"   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="   crossorigin="anonymous"></script>
+    <script src="code.js"></script>
+  </form>
+
+
+
+</body>
+</html>
